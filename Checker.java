@@ -1,4 +1,4 @@
-//Each checker will have a line, Serve Time, and 
+//Each checker will have a line and boolean to see if it's busy or not.
 
 public class Checker{
 
@@ -11,5 +11,13 @@ public class Checker{
 		busy = false;
 	}
 
+	public boolean isBusy(){
+		return busy;
+	}
+
+	public void setBusy(boolean b){
+		busy = b;
+		return;
+	}
 
 }
