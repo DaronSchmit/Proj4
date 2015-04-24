@@ -9,4 +9,4 @@ Similarly, files Washer.java, Car.java, CarMaker.java, and CarSim.java were used
 
 These files (Collectively known as "Lecture Examples") can be found here at https://ay14.moodle.umn.edu/mod/folder/view.php?id=947832 with proper University of Minnesota account privileges. 
 
-In no way is the use or reference of the Lecture Examples intented to be an infringement of the personal intellectual property of Chris Dovolis and/or other authors of the Lecture Examples. 
+In no way is the use or reference of the Lecture Examples intented to be an infringement of the personal intellectual property of Chris Dovolis and/or the other authors of the Lecture Examples. 
