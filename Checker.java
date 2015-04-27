@@ -10,8 +10,11 @@ public class Checker{
 	Checker(boolean express){
 		line = new Q1();
 		busy = false;
-		if(!express){
-			
+		if(express){
+			tenorless = true;
+		}
+		else{
+			tenorless = false;
 		}
 
 	}
