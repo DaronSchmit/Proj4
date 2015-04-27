@@ -18,6 +18,7 @@ public class CheckerEvent implements Event {
 	}
 
 	CheckerEvent(Checker c, int st){
+		checker = c;
 		serveTime = st;
 		empty = true;
 		shopper = getShopper(); 
@@ -38,8 +39,10 @@ public class CheckerEvent implements Event {
 			serveTime += timeTaken;
 		}
 
-		CheckerEvent newEvent = CheckerEvent(checker, serveTime);
-		agenda.add(newEvent, timeTaken); //add a domino
+		while(serveTime < Sim.finishTime){
+			CheckerEvent newEvent = CheckerEvent(checker, serveTime);
+			agenda.add(newEvent, timeTaken); //add a domino
+		}//Doesn't add if it is at
 	}
 	
 }

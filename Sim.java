@@ -6,7 +6,7 @@ public class Sim{
 
 		int normLanes = 10;
 		int expressLanes = 2;
-		int finishTime = 10000;
+		public static int finishTime = 10000;
 
 		static Checker[] lanes = Checker[normLanes + expressLanes];
 

@@ -35,6 +35,5 @@ public class Checker{
 	public Q1 getLine(){
 		return line;
 	}
-
-
+	
 }
