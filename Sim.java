@@ -1,14 +1,16 @@
 public class Sim{
 
-	public static void main(String[] args){
+	public static PQ agenda = new PQ();
+	public static int finishTime;
+	public static Checker[] lanes;
 
-		public static agenda = new PQ(); 
+	public static void main(String[] args){ 
 
+		lanes  = Checker[normLanes + expressLanes];
+		finishTime = 10000;
 		int normLanes = 10;
 		int expressLanes = 2;
-		public static int finishTime = 10000;
 
-		static Checker[] lanes = Checker[normLanes + expressLanes];
 
 		for(int i = 0; i < normLanes+expressLanes; i++){
 			if(i < normLanes){
@@ -28,7 +30,7 @@ public class Sim{
 
 		agenda.remove().run();//start the domino
 
-		while()
+		//while() - we will put stuff here eventually
 
 		//print stats here once we get to that
 	}

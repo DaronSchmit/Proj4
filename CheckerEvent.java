@@ -9,6 +9,7 @@ public class CheckerEvent implements Event {
 	private Checker checker;
 	private Shopper shopper;
 	public int total;
+	public int timeTaken;
 
 	
 	CheckerEvent(Checker c){
@@ -42,7 +43,7 @@ public class CheckerEvent implements Event {
 
 		if(serveTime < Sim.finishTime){
 			CheckerEvent newEvent = CheckerEvent(checker, total);
-			agenda.add(newEvent, timeTaken); //add a domino
+			Sim.agenda.add(newEvent, timeTaken); //add a domino
 		}//Doesn't add if it is at
 	}
 	

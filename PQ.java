@@ -19,7 +19,7 @@ public class PQ implements PQInterface {
     // methods
 
     public void add(Event o, double time) {
-        lentgth++;
+        length++;
 
         time += getCurrentTime();
         
@@ -45,7 +45,7 @@ public class PQ implements PQInterface {
     }  // add method
 
     public Event remove() {
-        lentgth--;
+        length--;
         if (this.isEmpty()) {
           System.out.println("Error: removing from empty queue");
           length++;
@@ -66,7 +66,7 @@ public class PQ implements PQInterface {
         return seg.getTime();
     }
 
-    public getLength(){
+    public int getLength(){
       return length;
     }
 
