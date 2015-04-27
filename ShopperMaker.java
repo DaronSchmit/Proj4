@@ -1,6 +1,11 @@
 import java.util.Random;
 
 public class ShopperMaker implements Event{
+	private int numLanes, numExpress;
+	public ShopperMaker(int lanes, int express){
+		numLanes = lanes;
+		numExpress = express;
+	}
 	
 	public double findArrival(){
 		double iaRate = 30;
@@ -45,5 +50,30 @@ public class ShopperMaker implements Event{
 		int q = generator.nextInt(9);
 		x = x - q;
 		return x;
+	}
+
+	public void makeShopper(){
+		Shopper newShopper = new Shopper(findItems, findArrival);
+		
+	}
+
+	public void assignShopper(){
+		int lowest = 1200;
+		int bestOption;
+		for(int i = 0; i < lanes - express; i++){
+			if(lanes[i] < lowest){
+				bestOption = i;
+			}
+		}
+		lanes[bestOption].getLine().add(newShopper);
+
+
+	}
+
+	public void run(){
+		makeShopper;
+		assignShopper;
+		Shoppermaker.run();
+
 	}
 }

@@ -3,7 +3,7 @@ public class Shopper {
 	private int items;
 	private int arrival;
 	
-	public Shopper(int i, int d){
+	public Shopper(int i, double d){
 		items = i;
 		arrival = d;
 	}
@@ -14,7 +14,7 @@ public class Shopper {
 		items = i;
 	}
 	
-	public void setArrival(int d){
+	public void setArrival(double d){
 		arrival = d;
 	}
 	
