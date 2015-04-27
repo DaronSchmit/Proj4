@@ -10,7 +10,7 @@ public class CheckerEvent implements Event {
 	
 	CheckerEvent(Checker c){
 		checker = c;
-		this.serveTime = 0;
+		serveTime = 0;
 	}
 
 	CheckerEvent(Checker c, int st){
@@ -27,11 +27,12 @@ public class CheckerEvent implements Event {
 		}
 		else{
 			checker.setBusy(true);
-			shopper = (Shopper) checker.line.remove();
+			shopper = (ShopperEvent) checker.line.remove();
 			serveTime += shopper.getItems()*5;
 		}
 
 		CheckerEvent newEvent = CheckerEvent(checker, serveTime);
+		agenda.add(newEvent);
 	}
 	
 }
