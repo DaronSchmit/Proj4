@@ -6,6 +6,7 @@ public class Sim{
 
 		int normLanes = 10;
 		int expressLanes = 2;
+		int finishTime = 10000;
 
 		static Checker[] lanes = Checker[normLanes + expressLanes];
 
@@ -26,5 +27,9 @@ public class Sim{
 		}
 
 		agenda.remove().run();//start the domino
+
+		while()
+
+		//print stats here once we get to that
 	}
 }

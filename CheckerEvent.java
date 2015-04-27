@@ -7,33 +7,39 @@ public class CheckerEvent implements Event {
 
 	private int serveTime;
 	private Checker checker;
+	private Shopper shopper;
+
 	
 	CheckerEvent(Checker c){
 		checker = c;
 		serveTime = 0;
+		shopper = getShopper();
+		timeTaken = shopper.getItems()*5;
 	}
 
 	CheckerEvent(Checker c, int st){
 		serveTime = st;
 		empty = true;
+		shopper = getShopper(); 
+		timeTaken = shopper.getItems()*5;
+	}
+
+	private Shopper getShopper(){
+		return (Shopper) checker.getLine().remove();
 	}
 
 	public void run(){
 
-		Shopper shopper;
-		
-		if (checker.line.isEmpty()){
+		if (shopper == null){
 			checker.setBusy(false);
 		}
 		else{
 			checker.setBusy(true);
-			shopper = (ShopperEvent) checker.line.remove();
-			serveTime += shopper.getItems()*5;
+			serveTime += timeTaken;
 		}
 
 		CheckerEvent newEvent = CheckerEvent(checker, serveTime);
-		agenda.add(newEvent); //add a domino
-		agenda.remove().run(); //the dominoes continue
+		agenda.add(newEvent, timeTaken); //add a domino
 	}
 	
 }
