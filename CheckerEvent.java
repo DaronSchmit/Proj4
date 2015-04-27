@@ -5,9 +5,10 @@
 
 public class CheckerEvent implements Event {
 
-	private int serveTime;
+	public int serveTime;
 	private Checker checker;
 	private Shopper shopper;
+	public int total;
 
 	
 	CheckerEvent(Checker c){
@@ -17,8 +18,9 @@ public class CheckerEvent implements Event {
 		timeTaken = shopper.getItems()*5;
 	}
 
-	CheckerEvent(Checker c, int st){
-		serveTime = st;
+	CheckerEvent(Checker c, int totals){
+		total = totals;
+		checker = c;
 		empty = true;
 		shopper = getShopper(); 
 		timeTaken = shopper.getItems()*5;
@@ -35,10 +37,10 @@ public class CheckerEvent implements Event {
 		}
 		else{
 			checker.setBusy(true);
-			serveTime += timeTaken;
+			total += timeTaken;
 		}
 
-		CheckerEvent newEvent = CheckerEvent(checker, serveTime);
+		CheckerEvent newEvent = CheckerEvent(checker, total);
 		agenda.add(newEvent, timeTaken); //add a domino
 	}
 	
