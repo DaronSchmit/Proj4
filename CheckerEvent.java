@@ -39,7 +39,7 @@ public class CheckerEvent implements Event {
 			serveTime += timeTaken;
 		}
 
-		while(serveTime < Sim.finishTime){
+		if(serveTime < Sim.finishTime){
 			CheckerEvent newEvent = CheckerEvent(checker, serveTime);
 			agenda.add(newEvent, timeTaken); //add a domino
 		}//Doesn't add if it is at
