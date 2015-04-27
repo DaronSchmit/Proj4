@@ -4,11 +4,16 @@ public class Checker{
 
 	private Q1 line;
 	private boolean busy;
+	private boolean tenorless;
 
 
-	Checker(){
-		line = new PQ();
+	Checker(boolean express){
+		line = new Q1();
 		busy = false;
+		if(!express){
+			
+		}
+
 	}
 
 	public boolean isBusy(){
@@ -19,5 +24,10 @@ public class Checker{
 		busy = b;
 		return;
 	}
+
+	public boolean isExpress(){
+		return tenorless;
+	}
+
 
 }

@@ -4,9 +4,17 @@ public class Sim{
 
 		public static agenda = new PQ(); 
 
-		c1 = new Checker();
-		c2 = new Checker();
-		c3 = new Checker();
+		int normLanes = 10;
+		int expressLanes = 2;
+
+		static Checker[] lanes = Checker[normLanes + expressLanes];
+
+		for(int i = 0; i < normLanes+expressLanes; i++){
+			if()
+			else{
+				lanes[i] = new Checker(false);
+			}
+		}
 
 	}
 }
