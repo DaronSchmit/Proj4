@@ -23,7 +23,7 @@ public class Sim{
 		first.run();
 
 		for(int i = 0; i < lanes.length(); i++){
-			agenda.add(CheckerEvent(lanes[i]));
+			agenda.add(CheckerEvent(lanes[i]),CheckerEvent.serveTime);
 		}
 
 		agenda.remove().run();//start the domino
