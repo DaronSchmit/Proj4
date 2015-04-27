@@ -40,8 +40,10 @@ public class CheckerEvent implements Event {
 			total += timeTaken;
 		}
 
-		CheckerEvent newEvent = CheckerEvent(checker, total);
-		agenda.add(newEvent, timeTaken); //add a domino
+		if(serveTime < Sim.finishTime){
+			CheckerEvent newEvent = CheckerEvent(checker, total);
+			agenda.add(newEvent, timeTaken); //add a domino
+		}//Doesn't add if it is at
 	}
 	
 }
