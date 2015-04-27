@@ -32,5 +32,9 @@ public class Checker{
 		return tenorless;
 	}
 
+	public Q1 getLine(){
+		return line;
+	}
+
 
 }

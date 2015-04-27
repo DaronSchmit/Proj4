@@ -10,11 +10,21 @@ public class Sim{
 		static Checker[] lanes = Checker[normLanes + expressLanes];
 
 		for(int i = 0; i < normLanes+expressLanes; i++){
-			if()
-			else{
+			if(i < normLanes){
 				lanes[i] = new Checker(false);
+			}
+			else{
+				lanes[i] = new Checker(true);
 			}
 		}
 
+		ShopperMaker first = new ShopperMaker(normLanes, expressLanes);
+		first.run();
+
+		for(int i = 0; i < lanes.length(); i++){
+			agenda.add(CheckerEvent(lanes[i]));
+		}
+
+		agenda.remove().run();//start the domino
 	}
 }

@@ -32,7 +32,8 @@ public class CheckerEvent implements Event {
 		}
 
 		CheckerEvent newEvent = CheckerEvent(checker, serveTime);
-		agenda.add(newEvent);
+		agenda.add(newEvent); //add a domino
+		agenda.remove().run(); //the dominoes continue
 	}
 	
 }
