@@ -6,7 +6,7 @@ Public class Stats{
     }	
     int[] downtime = new int[normLanes + expressLanes];
     for(int i = 0; i < normLanes + expressLanes; i++){
-        downtime[i] =  15000 - lanes[i].total; // modify using time variable once while loop is made in sim
+        downtime[i] =  finishTime- lanes[i].total; // modify using time variable once while loop is made in sim
     }	
     
 }

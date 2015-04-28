@@ -33,6 +33,17 @@ public class Sim{
 
 		//while() - we will put stuff here eventually
 
-		//print stats here once we get to that
+		System.out.println("Statistics for this trial:");
+		System.out.print(finishTime + " second trial with " + normLanes + " lanes, " + expressLanes + " express lanes, and")
+		if(baggingTime == 5){
+			System.out.println(" employee Bagging: ")
+		}
+		else{
+			System.out.println(" shopper Bagging: ");
+		}
+		System.out.println("Each lane's downtime is as follows: ");
+		for(int i = 0; i < normLanes + expressLanes; i++){
+			System.out.println("Lane " + i + ": " + downtime[i]);
+		}
 	}
 }
