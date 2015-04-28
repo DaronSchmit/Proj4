@@ -74,6 +74,5 @@ public class ShopperMaker implements Event{
 		makeShopper();
 		assignShopper();
 		run();
-
 	}
 }

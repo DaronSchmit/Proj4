@@ -10,6 +10,7 @@ public class Sim{
 		finishTime = 10000;
 		int normLanes = 10;
 		int expressLanes = 2;
+		baggingTime = 5;  // user selects whether employees bag or shoppers bag
 
 
 		for(int i = 0; i < normLanes+expressLanes; i++){

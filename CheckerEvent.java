@@ -10,13 +10,14 @@ public class CheckerEvent implements Event {
 	private Shopper shopper;
 	public int total;
 	public int timeTaken;
+	public int baggingTime;
 
 	
 	CheckerEvent(Checker c){
 		checker = c;
 		serveTime = 0;
 		shopper = getShopper();
-		timeTaken = shopper.getItems()*5;
+		timeTaken = shopper.getItems()*baggingTime;
 	}
 
 	CheckerEvent(Checker c, int totals){
@@ -24,7 +25,7 @@ public class CheckerEvent implements Event {
 		checker = c;
 		empty = true;
 		shopper = getShopper(); 
-		timeTaken = shopper.getItems()*5;
+		timeTaken = shopper.getItems()*baggingTime;
 	}
 
 	private Shopper getShopper(){
