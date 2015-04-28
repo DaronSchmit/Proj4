@@ -1,3 +1,5 @@
+//makes a shopper and assigns it to a lane
+
 import java.util.Random;
 
 public class ShopperMaker implements Event{
@@ -57,11 +59,11 @@ public class ShopperMaker implements Event{
 		return newShopper;
 		
 	}
-	 
+
 	public void assignShopper(Shopper s){
 		int lowest = 1200;
 		int bestOption;
-		for(int i = 0; i < Sim.lanes - express; i++){
+		for(int i = 0; i < Sim.lane - numExpress; i++){
 			if(Sim.lanes[i] < lowest){
 				bestOption = i;
 			}

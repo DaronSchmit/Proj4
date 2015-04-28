@@ -1,7 +1,7 @@
 
 public class Shopper {
 	private int items;
-	private int arrival;
+	private double arrival;
 	
 	public Shopper(int i, double d){
 		items = i;
@@ -22,7 +22,7 @@ public class Shopper {
 		return items;
 	}
 	
-	public int getArrival(){
+	public double getArrival(){
 		return arrival;
 	}
 }

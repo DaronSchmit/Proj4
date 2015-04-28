@@ -8,28 +8,28 @@ public class CheckerEvent implements Event {
 	public int serveTime;
 	private Checker checker;
 	private Shopper shopper;
-	public int total;
-	public int timeTaken;
-	public int baggingTime;
+	private int baggingTime;
 
 	
 	CheckerEvent(Checker c){
 		checker = c;
 		serveTime = 0;
 		shopper = getShopper();
-		timeTaken = shopper.getItems()*baggingTime;
+		baggingTime = 5;
 	}
 
-	CheckerEvent(Checker c, int totals){
-		total = totals;
+	CheckerEvent(Checker c, int st){
 		checker = c;
-		empty = true;
-		shopper = getShopper(); 
-		timeTaken = shopper.getItems()*baggingTime;
+		shopper = getShopper();
+		baggingTime = 5; 
 	}
 
 	private Shopper getShopper(){
 		return (Shopper) checker.getLine().remove();
+	}
+
+	public int getTimeTaken(){
+		return shopper.getItems()*baggingTime;
 	}
 
 	public void run(){
@@ -39,12 +39,11 @@ public class CheckerEvent implements Event {
 		}
 		else{
 			checker.setBusy(true);
-			total += timeTaken;
 		}
 
 		if(serveTime < Sim.finishTime){
-			CheckerEvent newEvent = CheckerEvent(checker, total);
-			Sim.agenda.add(newEvent, timeTaken); //add a domino
+			CheckerEvent newEvent = new CheckerEvent(checker, serveTime);
+			Sim.agenda.add(newEvent, newEvent.getTimeTaken()); //add a domino
 		}//Doesn't add if it is at
 	}
 	

@@ -6,11 +6,11 @@ public class Sim{
 
 	public static void main(String[] args){ 
 
-		lanes  = Checker[normLanes + expressLanes];
-		finishTime = 10000;
 		int normLanes = 10;
 		int expressLanes = 2;
-		baggingTime = 5;  // user selects whether employees bag or shoppers bag; this needs to be set in CheckerEvent, otherwise it throws an error
+
+		lanes  = new Checker[normLanes + expressLanes];
+		finishTime = 15000;
 
 
 		for(int i = 0; i < normLanes+expressLanes; i++){
@@ -23,11 +23,13 @@ public class Sim{
 		}
 
 		ShopperMaker first = new ShopperMaker(normLanes, expressLanes);
-		first.run();
 
-		for(int i = 0; i < lanes.length(); i++){
-			agenda.add(CheckerEvent(lanes[i]),CheckerEvent.serveTime);
-		}
+		for(int i = 0; i < normLanes+expressLanes; i++){
+			CheckerEvent ce = new CheckerEvent(lanes[i]);
+			agenda.add(ce, ce.getTimeTaken());
+		}//set up the dominoes for each lane
+
+		first.run();
 
 		agenda.remove().run();//start the domino
 
