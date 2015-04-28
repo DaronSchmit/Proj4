@@ -10,7 +10,7 @@ public class Sim{
 		finishTime = 10000;
 		int normLanes = 10;
 		int expressLanes = 2;
-		baggingTime = 5;  // user selects whether employees bag or shoppers bag
+		baggingTime = 5;  // user selects whether employees bag or shoppers bag; this needs to be set in CheckerEvent, otherwise it throws an error
 
 
 		for(int i = 0; i < normLanes+expressLanes; i++){

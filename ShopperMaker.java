@@ -52,12 +52,13 @@ public class ShopperMaker implements Event{
 		return x;
 	}
 
-	public void makeShopper(){
-		Shopper newShopper = new Shopper(findItems, findArrival);
+	public Shopper makeShopper(){
+		Shopper newShopper = new Shopper(findItems(), findArrival());
+		return newShopper;
 		
 	}
-
-	public void assignShopper(){
+	 
+	public void assignShopper(Shopper s){
 		int lowest = 1200;
 		int bestOption;
 		for(int i = 0; i < Sim.lanes - express; i++){
@@ -65,14 +66,13 @@ public class ShopperMaker implements Event{
 				bestOption = i;
 			}
 		}
-		Sim.lanes[bestOption].getLine().add(newShopper);
+		Sim.lanes[bestOption].getLine().add(s);
 
 
 	}
 
 	public void run(){
-		makeShopper();
-		assignShopper();
+		assignShopper(makeShopper());
 		run();
 	}
 }
