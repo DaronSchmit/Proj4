@@ -29,6 +29,10 @@ public class CheckerEvent implements Event {
 	}
 
 	public int getTimeTaken(){
+		if(shopper == null){
+			checker.addDownTime(1);
+			return 0;
+		}
 		return shopper.getItems()*baggingTime;
 	}
 
@@ -54,6 +58,9 @@ public class CheckerEvent implements Event {
 			CheckerEvent newEvent = new CheckerEvent(checker, serveTime);
 			Sim.agenda.add(newEvent, newEvent.getTimeTaken()); //add a domino
 		}//Doesn't add if it is at
+		else{
+			checker.setServeTime(serveTime);
+		}
 	}
 	
 }

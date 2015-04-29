@@ -89,6 +89,5 @@ public class ShopperMaker implements Event{
 
 	public void run(){
 		assignShopper(makeShopper());
-		run();
 	}
 }

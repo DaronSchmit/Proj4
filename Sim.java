@@ -14,14 +14,7 @@ public class Sim{
 		finishTime = 15000;
 
 
-		int[] checkers = new int[normLanes + expressLanes];
-   		for(int i = 0; i < normLanes + expressLanes; i++){
-       		checkers[i] = lanes[i].total;
-    	}	
-    	int[] downtime = new int[normLanes + expressLanes];
-    	for(int i = 0; i < normLanes + expressLanes; i++){
-        	downtime[i] =  finishTime- lanes[i].total; 
-    	}	
+		int[] checkers = new int[normLanes + expressLanes];	
 
 		for(int i = 0; i < normLanes+expressLanes; i++){
 			if(i < normLanes){
@@ -34,16 +27,16 @@ public class Sim{
 
 		ShopperMaker first = new ShopperMaker(normLanes, expressLanes);
 
+		CheckerEvent ce;
+
 		for(int i = 0; i < normLanes+expressLanes; i++){
-			CheckerEvent ce = new CheckerEvent(lanes[i]);
+			ce = new CheckerEvent(lanes[i]);
 			agenda.add(ce, ce.getTimeTaken());
 		}//set up the dominoes for each lane
 
 		first.run();
 
 		agenda.remove().run();//start the domino
-
-		//while() - we will put stuff here eventually
 
 		System.out.println("Statistics for this trial:");
 		System.out.print(finishTime + " second trial with " + normLanes + " lanes, " + expressLanes + " express lanes, and");	
@@ -54,8 +47,24 @@ public class Sim{
 			System.out.println(" shopper Bagging: ");
 		}
 		System.out.println("Each lane's downtime is as follows: ");
-		for(int i = 0; i < normLanes + expressLanes; i++){
-			System.out.println("Lane " + i + ": " + lanes[i].getDownTime());
+
+		for(int i = 0; i < normLanes; i++){
+
+			System.out.println("Normal Lane " + i+1 + ": " + lanes[i].getDownTime());
 		}
+
+		for(int i = normLanes; i < normLanes + expressLanes; i++){
+			System.out.println("Express Lane" + (i+1) + ": " + lanes[i].getDownTime());
+		}
+
+/*   		for(int i = 0; i < normLanes + expressLanes; i++){
+       		checkers[i] = lanes[i].getServeTime(); //is this an array of the total time served?
+    	}	
+    	int[] downtime = new int[normLanes + expressLanes]; // array of downtime for each register
+    	for(int i = 0; i < normLanes + expressLanes; i++){
+        	downtime[i] =  lanes[i].getDownTime(); 
+    	}
+    	*///What is this for??
+
 	}
 }

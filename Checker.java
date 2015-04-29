@@ -7,6 +7,7 @@ public class Checker{
 	private boolean tenorless;
 	private int busyTime;
 	private int downTime;
+	private int serveTime;
 
 
 	Checker(boolean express){
@@ -55,6 +56,14 @@ public class Checker{
 
 	public void addBusyTime(int bt){
 		busyTime += bt;
+	}
+
+	public void setServeTime(int st){
+		serveTime = st;
+	}
+
+	public int getServeTime(){
+		return serveTime;
 	}
 
 }
