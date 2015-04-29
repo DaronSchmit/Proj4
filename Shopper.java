@@ -3,9 +3,9 @@ public class Shopper {
 	private int items;
 	private double arrival;
 	
-	public Shopper(int i, double d){
+	public Shopper(int i){
 		items = i;
-		arrival = d;
+		arrival = Sim.agenda.getCurrentTime();
 	}
 	
 	public Shopper(){}

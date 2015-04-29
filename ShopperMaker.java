@@ -3,11 +3,8 @@
 import java.util.Random;
 
 public class ShopperMaker implements Event{
-	private int numLanes, numExpress, totLanes;
-	public ShopperMaker(int lanes, int express){
-		numLanes = lanes;
-		numExpress = express;
-		totLanes = lanes + express;
+	private int totLanes;
+	public ShopperMaker(){
 	}
 	
 	public double findArrival(){
@@ -56,7 +53,7 @@ public class ShopperMaker implements Event{
 	}
 
 	public Shopper makeShopper(){
-		Shopper newShopper = new Shopper(findItems(), findArrival());
+		Shopper newShopper = new Shopper(findItems());
 		return newShopper;
 		
 	}
@@ -67,7 +64,7 @@ public class ShopperMaker implements Event{
 		int numItems = s.getItems();
 		Checker c = null;
 		if(numItems <= 10){ //checking for express lanes first
-			for(int i = numLanes; i < totLanes; i++){
+			for(int i = Sim.normLanes; i < Sim.totLanes; i++){
 				if(Sim.lanes[i].getLine().length() < lowest){
 					lowest = Sim.lanes[i].getLine().length();
 					bestOption = i;
@@ -75,7 +72,7 @@ public class ShopperMaker implements Event{
 			}
 		}
 		else{
-			for(int i = numLanes; i < totLanes; i++){
+			for(int i = Sim.normLanes; i < Sim.totLanes; i++){
 				if(Sim.lanes[i].getLine().length() < lowest){
 					lowest = Sim.lanes[i].getLine().length();
 					bestOption = i;
@@ -90,7 +87,7 @@ public class ShopperMaker implements Event{
 	public void run(){
 		Shopper shop = makeShopper();
 		assignShopper(shop);
-		System.out.println("added shopper");
-		System.out.println("items: " + shop.getItems());
+		Sim.agenda.add(new ShopperMaker(), findArrival());
+		System.out.println("Added shopper at " + Sim.agenda.getCurrentTime());
 	}
 }
