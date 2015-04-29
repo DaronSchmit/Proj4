@@ -1,23 +1,26 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 public class Sim{
 
 	public static PQ agenda = new PQ();
 	public static int finishTime;
 	public static int baggingTime;
 	public static Checker[] lanes;
-	public static int normLanes = 8;
-	public static int expressLanes = 0;
+	public static int normLanes = 6;
+	public static int expressLanes = 1;
 	public static int totLanes = normLanes + expressLanes;
 
 	public static void main(String[] args){ 
 
 		lanes  = new Checker[normLanes + expressLanes];
 		finishTime = 50000;
-
 		baggingTime = 5;
-
-
-
 		int[] checkers = new int[normLanes + expressLanes];	
+
+
 
 		for(int i = 0; i < normLanes+expressLanes; i++){
 			if(i < normLanes){
@@ -29,23 +32,10 @@ public class Sim{
 		}
 
 		ShopperMaker first = new ShopperMaker();
-
-/*
-		CheckerEvent fce = new CheckerEvent(lanes[0]);
-		Shopper fs = first.makeShopper();
-		lanes[0].getLine().add(fs);
-		Shopper fces = lanes[0].getLine().remove();
-		if(fces == fs){
-			System.out.println("fixed it");
-			System.out.println(fces.getItems());
-		}
-*/
-
-
-
 		agenda.add(first, 0);
-
 		CheckerEvent ce;
+
+
 
 		for(int i = 0; i < normLanes+expressLanes; i++){
 			ce = new CheckerEvent(lanes[i]);
@@ -79,19 +69,32 @@ public class Sim{
 			else{
 				System.out.print("Normal Lane ");
 			}
-			System.out.println((i+1) + ":   " + r.getBusyTime() + "      " + r.getDownTime() + "         " + r.getShopperCount() + "       " + r.getItemCount() + "          " + r.getAveTimeWaited());
+
+
+
+			try{
+    		File file =new File("javaio-appendfile.txt");
+ 			int d = r.getAveTimeWaited();
+    		//if file doesnt exists, then create it
+    		if(!file.exists()){
+    			file.createNewFile();
+    		}
+ 
+    		//true = append file
+    		FileWriter fileWritter = new FileWriter(file.getName(),true);
+    	    BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
+    	    bufferWritter.write(d);
+    	    bufferWritter.close();
+ 
+	        System.out.println("Done");
+ 
+    		}catch(IOException e){
+    			e.printStackTrace();
+    		}		
+
+
+
+    		//System.out.println((i+1) + ":   " + r.getBusyTime() + "      " + r.getDownTime() + "         " + r.getShopperCount() + "       " + r.getItemCount() + "          " + r.getAveTimeWaited());
 		}
-
-		/*
-		for(int i = 0; i < normLanes + expressLanes; i++){
-       		checkers[i] = lanes[i].getServeTime(); //is this an array of the total time served?
-    	}	
-    	int[] downtime = new int[normLanes + expressLanes]; // array of downtime for each register
-    	for(int i = 0; i < normLanes + expressLanes; i++){
-        	downtime[i] =  lanes[i].getDownTime(); 
-    	}
-    	*/
-    	//What is this for?
-
 	}
 }
