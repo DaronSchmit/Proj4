@@ -40,14 +40,17 @@ public class CheckerEvent implements Event {
 		if (shopper == null){
 			checker.setBusy(false);
 			checker.addDownTime(1);
+			Sim.agenda.add(newEvent, 1);
 		}
 		else{
 			checker.setBusy(true);
 			checker.addBusyTime(getTimeTaken());
 			checker.addShopperCount(1);
+			checker.addItemCount(shopper.getItems());
+			Sim.agenda.add(newEvent, getTimeTaken());
 		}
-		//System.out.println("CheckerEvent at " + Sim.agenda.getCurrentTime());
-		Sim.agenda.add(newEvent, 1);
+		System.out.println("CheckerEvent at " + Sim.agenda.getCurrentTime());
+
 	}
 	
 }

@@ -79,6 +79,7 @@ public class ShopperMaker implements Event{
 				}
 			}
 		}
+		System.out.println("Added shopper to lane " + bestOption + " at time " + Sim.agenda.getCurrentTime());
 		Sim.lanes[bestOption].getLine().add(s);
 
 
@@ -88,6 +89,5 @@ public class ShopperMaker implements Event{
 		Shopper shop = makeShopper();
 		assignShopper(shop);
 		Sim.agenda.add(new ShopperMaker(), findArrival());
-		System.out.println("Added shopper at " + Sim.agenda.getCurrentTime());
 	}
 }
