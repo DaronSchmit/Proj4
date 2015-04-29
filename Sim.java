@@ -2,12 +2,14 @@ public class Sim{
 
 	public static PQ agenda = new PQ();
 	public static int finishTime;
+	public static int baggingTime;
 	public static Checker[] lanes;
 
 	public static void main(String[] args){ 
 
 		int normLanes = 10;
 		int expressLanes = 2;
+
 
 		lanes  = new Checker[normLanes + expressLanes];
 		finishTime = 15000;
@@ -36,16 +38,16 @@ public class Sim{
 		//while() - we will put stuff here eventually
 
 		System.out.println("Statistics for this trial:");
-		System.out.print(finishTime + " second trial with " + normLanes + " lanes, " + expressLanes + " express lanes, and")
+		System.out.print(finishTime + " second trial with " + normLanes + " lanes, " + expressLanes + " express lanes, and");	
 		if(baggingTime == 5){
-			System.out.println(" employee Bagging: ")
+			System.out.println(" employee Bagging: ");
 		}
 		else{
 			System.out.println(" shopper Bagging: ");
 		}
 		System.out.println("Each lane's downtime is as follows: ");
 		for(int i = 0; i < normLanes + expressLanes; i++){
-			System.out.println("Lane " + i + ": " + downtime[i]);
+			System.out.println("Lane " + i + ": " + lanes[i].getDownTime());
 		}
 	}
 }

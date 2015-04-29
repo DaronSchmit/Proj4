@@ -3,10 +3,11 @@
 import java.util.Random;
 
 public class ShopperMaker implements Event{
-	private int numLanes, numExpress;
+	private int numLanes, numExpress, totLanes;
 	public ShopperMaker(int lanes, int express){
 		numLanes = lanes;
 		numExpress = express;
+		totLanes = lanes + express;
 	}
 	
 	public double findArrival(){
@@ -62,10 +63,23 @@ public class ShopperMaker implements Event{
 
 	public void assignShopper(Shopper s){
 		int lowest = 1200;
-		int bestOption;
-		for(int i = 0; i < Sim.lane - numExpress; i++){
-			if(Sim.lanes[i] < lowest){
-				bestOption = i;
+		int bestOption = 0;
+		int numItems = s.getItems();
+		Checker c = null;
+		if(numItems <= 10){ //checking for express lanes first
+			for(int i = numLanes; i < totLanes; i++){
+				if(Sim.lanes[i].getLine().length() < lowest){
+					lowest = Sim.lanes[i].getLine().length();
+					bestOption = i;
+				}
+			}
+		}
+		else{
+			for(int i = numLanes; i < totLanes; i++){
+				if(Sim.lanes[i].getLine().length() < lowest){
+					lowest = Sim.lanes[i].getLine().length();
+					bestOption = i;
+				}
 			}
 		}
 		Sim.lanes[bestOption].getLine().add(s);

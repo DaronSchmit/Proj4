@@ -15,7 +15,7 @@ public class CheckerEvent implements Event {
 		checker = c;
 		serveTime = 0;
 		shopper = getShopper();
-		baggingTime = 5;
+		baggingTime = Sim.baggingTime;
 	}
 
 	CheckerEvent(Checker c, int st){
@@ -30,6 +30,15 @@ public class CheckerEvent implements Event {
 
 	public int getTimeTaken(){
 		return shopper.getItems()*baggingTime;
+	}
+
+	public int getBaggingTime(){
+		return baggingTime;
+	}
+
+	public void setBaggingTime(int bt){
+		baggingTime = bt;
+		return;
 	}
 
 	public void run(){
