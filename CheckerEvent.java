@@ -8,7 +8,7 @@ public class CheckerEvent implements Event {
 	public int serveTime;
 	private Checker checker;
 	private Shopper shopper;
-	private int baggingTime;
+	public int baggingTime;
 
 	
 	CheckerEvent(Checker c){
