@@ -36,7 +36,6 @@ public class CheckerEvent implements Event {
 	}
 
 	public void run(){
-
 		if (shopper == null){
 			checker.setBusy(false);
 			checker.addDownTime(1);
@@ -50,7 +49,7 @@ public class CheckerEvent implements Event {
 		if(serveTime < Sim.finishTime){
 			CheckerEvent newEvent = new CheckerEvent(checker, serveTime);
 			Sim.agenda.add(newEvent, newEvent.getTimeTaken()); //add a domino
-		}//Doesn't add if it is at
+		}//Doesn't add if time is up
 		else{
 			checker.setServeTime(serveTime);
 		}

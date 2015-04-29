@@ -88,6 +88,9 @@ public class ShopperMaker implements Event{
 	}
 
 	public void run(){
-		assignShopper(makeShopper());
+		Shopper shop = makeShopper();
+		assignShopper(shop);
+		System.out.println("added shopper");
+		System.out.println("items: " + shop.getItems());
 	}
 }
