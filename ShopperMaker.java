@@ -78,7 +78,7 @@ public class ShopperMaker implements Event{
 				}
 			}
 		}
-		System.out.println("Added shopper to lane " + (bestOption+1) + " with " + s.getItems() + " items at time " + Sim.agenda.getCurrentTime());
+		//System.out.println("Added shopper to lane " + (bestOption+1) + " with " + s.getItems() + " items at time " + Sim.agenda.getCurrentTime());
 		Sim.lanes[bestOption].getLine().add(s);
 
 

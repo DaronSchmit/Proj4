@@ -55,6 +55,7 @@ public class CheckerEvent implements Event {
 			checker.addBusyTime(getTimeTaken());
 			checker.addShopperCount(1);
 			checker.addItemCount(shopper.getItems());
+			checker.addTimeWaited(shopper.getTimeWaited());
 			Sim.agenda.add(newEvent, getTimeTaken());
 		}
 		//System.out.println("CheckerEvent at " + Sim.agenda.getCurrentTime());

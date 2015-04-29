@@ -11,9 +11,10 @@ public class Checker{
 	private int serveTime;
 	private int shopperCount;
 	private int itemCount;
-
+	private double timeWaited;
 
 	Checker(boolean express){
+		timeWaited = 0;
 		line = new Q1S();
 		busy = false;
 		if(express){
@@ -31,6 +32,14 @@ public class Checker{
 
 	public boolean isBusy(){
 		return busy;
+	}
+
+	public void addTimeWaited(double n){
+		timeWaited += n;
+	}
+
+	public double getWaited(){
+		return timeWaited;
 	}
 
 	public void setBusy(boolean b){
@@ -85,5 +94,11 @@ public class Checker{
 
 	public int getItemCount(){
 		return itemCount;
+	}
+
+	public int getAveTimeWaited(){
+		double potato = timeWaited / shopperCount;
+		int y = (int)Math.round(potato);
+		return y;
 	}
 }

@@ -4,16 +4,17 @@ public class Sim{
 	public static int finishTime;
 	public static int baggingTime;
 	public static Checker[] lanes;
-	public static int normLanes = 5;
-	public static int expressLanes = 2;
+	public static int normLanes = 8;
+	public static int expressLanes = 0;
 	public static int totLanes = normLanes + expressLanes;
 
 	public static void main(String[] args){ 
 
 		lanes  = new Checker[normLanes + expressLanes];
-		finishTime = 10000;
+		finishTime = 50000;
 
 		baggingTime = 5;
+
 
 
 		int[] checkers = new int[normLanes + expressLanes];	
@@ -68,7 +69,7 @@ public class Sim{
 
 		Checker r = null;
 		System.out.println("Each lane's busy time, down time, shoppers served, and items sold: ");
-		System.out.println("Lane number     Busy Time     Down Time     Shoppers     Items");
+		System.out.println("Lane number  Busy Time  Down Time  Shoppers    Items   Average Wait");
 
 		for(int i = 0; i < totLanes; i++){
 			r = lanes[i];
@@ -78,7 +79,7 @@ public class Sim{
 			else{
 				System.out.print("Normal Lane ");
 			}
-			System.out.println((i+1) + ":      " + r.getBusyTime() + "         " + r.getDownTime() + "            " + r.getShopperCount() + "             " + r.getItemCount());
+			System.out.println((i+1) + ":   " + r.getBusyTime() + "      " + r.getDownTime() + "         " + r.getShopperCount() + "       " + r.getItemCount() + "          " + r.getAveTimeWaited());
 		}
 
 		/*

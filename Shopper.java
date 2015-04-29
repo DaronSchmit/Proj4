@@ -25,4 +25,8 @@ public class Shopper{
 	public double getArrival(){
 		return arrival;
 	}
+
+	public double getTimeWaited(){
+		return Sim.agenda.getCurrentTime() - arrival;
+	}
 }
