@@ -10,10 +10,18 @@ public class Sim{
 		int normLanes = 10;
 		int expressLanes = 2;
 
-
 		lanes  = new Checker[normLanes + expressLanes];
 		finishTime = 15000;
 
+
+		int[] checkers = new int[normLanes + expressLanes];
+   		for(int i = 0; i < normLanes + expressLanes; i++){
+       		checkers[i] = lanes[i].total;
+    	}	
+    	int[] downtime = new int[normLanes + expressLanes];
+    	for(int i = 0; i < normLanes + expressLanes; i++){
+        	downtime[i] =  finishTime- lanes[i].total; 
+    	}	
 
 		for(int i = 0; i < normLanes+expressLanes; i++){
 			if(i < normLanes){
