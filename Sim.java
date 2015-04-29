@@ -11,7 +11,7 @@ public class Sim{
 	public static void main(String[] args){ 
 
 		lanes  = new Checker[normLanes + expressLanes];
-		finishTime = 5000;
+		finishTime = 100;
 
 		baggingTime = 5;
 
@@ -27,23 +27,35 @@ public class Sim{
 			}
 		}
 
+
+
+
 		ShopperMaker first = new ShopperMaker();
-		
+		CheckerEvent fce = new CheckerEvent(lanes[0]);
+		Shopper fs = first.makeShopper();
+		lanes[0].getLine().add(fs);
+		Object fces = lanes[0].getLine().remove();
+		if(null == fs){
+			System.out.println("found it");
+		}
+
+
+
+
 		agenda.add(first, 0);
 
 		CheckerEvent ce;
-
-		lanes[0].getLine().add(new Shopper(15));
 
 		for(int i = 0; i < normLanes+expressLanes; i++){
 			ce = new CheckerEvent(lanes[i]);
 			agenda.add(ce,1);
 		}//set up the dominoes for each lane
 
+		/*
 		while(agenda.getCurrentTime() < finishTime){
 			agenda.remove().run();
 		}
-
+		*/
 
 		System.out.println("Statistics for this trial:");
 		System.out.print(finishTime + " second trial with " + normLanes + " lanes, " + expressLanes + " express lanes, and");	

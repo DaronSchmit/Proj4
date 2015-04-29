@@ -3,7 +3,7 @@
 
 public class Checker{
 
-	private Q1 line;
+	private Q1S line;
 	private boolean busy;
 	private boolean tenorless;
 	private int busyTime;
@@ -14,7 +14,7 @@ public class Checker{
 
 
 	Checker(boolean express){
-		line = new Q1();
+		line = new Q1S();
 		busy = false;
 		if(express){
 			tenorless = true;
@@ -42,7 +42,7 @@ public class Checker{
 		return tenorless;
 	}
 
-	public Q1 getLine(){
+	public QS getLine(){
 		return line;
 	}
 

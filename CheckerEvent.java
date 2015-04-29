@@ -22,8 +22,13 @@ public class CheckerEvent implements Event {
 		shopper = getShopper();
 	}
 
-	private Shopper getShopper(){
-		return (Shopper) checker.getLine().remove();
+	public Shopper getShopper(){
+		Shopper shop = checker.getLine().remove();
+
+		if(shop == null){
+			System.out.println("got a null one");
+		}
+		return shop;
 	}
 
 	public int getTimeTaken(){
@@ -49,7 +54,7 @@ public class CheckerEvent implements Event {
 			checker.addItemCount(shopper.getItems());
 			Sim.agenda.add(newEvent, getTimeTaken());
 		}
-		System.out.println("CheckerEvent at " + Sim.agenda.getCurrentTime());
+		//System.out.println("CheckerEvent at " + Sim.agenda.getCurrentTime());
 
 	}
 	

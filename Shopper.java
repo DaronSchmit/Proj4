@@ -1,5 +1,5 @@
 
-public class Shopper {
+public class Shopper{
 	private int items;
 	private double arrival;
 	
