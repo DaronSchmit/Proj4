@@ -41,6 +41,15 @@ public class Q1S implements QS {
         return size;
     }
 
+    public boolean isEmpty(){
+        if(size == 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     private int size;
     private NS front;
     private NS rear;

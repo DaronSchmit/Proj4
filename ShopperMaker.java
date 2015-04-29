@@ -62,7 +62,6 @@ public class ShopperMaker implements Event{
 		int lowest = 1200;
 		int bestOption = 0;
 		int numItems = s.getItems();
-		Checker c = null;
 		if(numItems <= 10){ //checking for express lanes first
 			for(int i = Sim.normLanes; i < Sim.totLanes; i++){
 				if(Sim.lanes[i].getLine().length() < lowest){
@@ -72,14 +71,14 @@ public class ShopperMaker implements Event{
 			}
 		}
 		else{
-			for(int i = Sim.normLanes; i < Sim.totLanes; i++){
+			for(int i = 0; i < Sim.normLanes; i++){
 				if(Sim.lanes[i].getLine().length() < lowest){
 					lowest = Sim.lanes[i].getLine().length();
 					bestOption = i;
 				}
 			}
 		}
-		System.out.println("Added shopper to lane " + bestOption + " at time " + Sim.agenda.getCurrentTime());
+		System.out.println("Added shopper to lane " + (bestOption+1) + " with " + s.getItems() + " items at time " + Sim.agenda.getCurrentTime());
 		Sim.lanes[bestOption].getLine().add(s);
 
 

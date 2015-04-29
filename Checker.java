@@ -42,7 +42,7 @@ public class Checker{
 		return tenorless;
 	}
 
-	public QS getLine(){
+	public Q1S getLine(){
 		return line;
 	}
 

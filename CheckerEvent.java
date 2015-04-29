@@ -13,22 +13,25 @@ public class CheckerEvent implements Event {
 	CheckerEvent(Checker c){
 		checker = c;
 		serveTime = 0;
-		shopper = getShopper();
+		if(checker.getLine().isEmpty()){
+			shopper = new Shopper(0);
+		}
+		else{
+			shopper = checker.getLine().remove();
+			//System.out.println(shopper.getItems());		
+		}
 	}
 
 	CheckerEvent(Checker c, int st){
 		checker = c;
 		serveTime = st;
-		shopper = getShopper();
-	}
-
-	public Shopper getShopper(){
-		Shopper shop = checker.getLine().remove();
-
-		if(shop == null){
-			System.out.println("got a null one");
+		if(checker.getLine().isEmpty()){
+			shopper = new Shopper(0);
 		}
-		return shop;
+		else{
+			shopper = checker.getLine().remove();
+			//System.out.println(shopper.getItems());		
+		}
 	}
 
 	public int getTimeTaken(){
@@ -42,7 +45,7 @@ public class CheckerEvent implements Event {
 
 	public void run(){
 		CheckerEvent newEvent = new CheckerEvent(checker, serveTime);
-		if (shopper == null){
+		if (shopper.getItems() == 0){
 			checker.setBusy(false);
 			checker.addDownTime(1);
 			Sim.agenda.add(newEvent, 1);

@@ -4,14 +4,14 @@ public class Sim{
 	public static int finishTime;
 	public static int baggingTime;
 	public static Checker[] lanes;
-	public static int normLanes = 10;
+	public static int normLanes = 5;
 	public static int expressLanes = 2;
 	public static int totLanes = normLanes + expressLanes;
 
 	public static void main(String[] args){ 
 
 		lanes  = new Checker[normLanes + expressLanes];
-		finishTime = 100;
+		finishTime = 10000;
 
 		baggingTime = 5;
 
@@ -27,18 +27,18 @@ public class Sim{
 			}
 		}
 
-
-
-
 		ShopperMaker first = new ShopperMaker();
+
+/*
 		CheckerEvent fce = new CheckerEvent(lanes[0]);
 		Shopper fs = first.makeShopper();
 		lanes[0].getLine().add(fs);
-		Object fces = lanes[0].getLine().remove();
-		if(null == fs){
-			System.out.println("found it");
+		Shopper fces = lanes[0].getLine().remove();
+		if(fces == fs){
+			System.out.println("fixed it");
+			System.out.println(fces.getItems());
 		}
-
+*/
 
 
 
@@ -51,11 +51,11 @@ public class Sim{
 			agenda.add(ce,1);
 		}//set up the dominoes for each lane
 
-		/*
+		
 		while(agenda.getCurrentTime() < finishTime){
 			agenda.remove().run();
 		}
-		*/
+		
 
 		System.out.println("Statistics for this trial:");
 		System.out.print(finishTime + " second trial with " + normLanes + " lanes, " + expressLanes + " express lanes, and");	
@@ -68,13 +68,17 @@ public class Sim{
 
 		Checker r = null;
 		System.out.println("Each lane's busy time, down time, shoppers served, and items sold: ");
-		System.out.println("Lane number     Busy Time   Down Time   Shoppers   Items");
-		for(int i = 0; i < normLanes; i++){
+		System.out.println("Lane number     Busy Time     Down Time     Shoppers     Items");
+
+		for(int i = 0; i < totLanes; i++){
 			r = lanes[i];
-			System.out.println("Normal Lane " + (i+1) + ":      " + r.getBusyTime() + "         " + r.getDownTime() + "            " + r.getShopperCount() + "             " + r.getItemCount());
-		}
-		for(int i = normLanes; i < normLanes + expressLanes; i++){
-			System.out.println("Express Lane " + (i+1) + ":     " + r.getBusyTime() + "         " + r.getDownTime() + "            " + r.getShopperCount() + "             " + r.getItemCount());
+			if(lanes[i].isExpress()){
+				System.out.print("Express Lane ");
+			}
+			else{
+				System.out.print("Normal Lane ");
+			}
+			System.out.println((i+1) + ":      " + r.getBusyTime() + "         " + r.getDownTime() + "            " + r.getShopperCount() + "             " + r.getItemCount());
 		}
 
 		/*
