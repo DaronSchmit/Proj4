@@ -8,20 +8,18 @@ public class CheckerEvent implements Event {
 	public int serveTime;
 	private Checker checker;
 	private Shopper shopper;
-	public int baggingTime;
 
 	
 	CheckerEvent(Checker c){
 		checker = c;
 		serveTime = 0;
 		shopper = getShopper();
-		baggingTime = Sim.baggingTime;
 	}
 
 	CheckerEvent(Checker c, int st){
 		checker = c;
+		serveTime = st;
 		shopper = getShopper();
-		baggingTime = 5; 
 	}
 
 	private Shopper getShopper(){
@@ -30,28 +28,23 @@ public class CheckerEvent implements Event {
 
 	public int getTimeTaken(){
 		if(shopper == null){
-			checker.addDownTime(1);
 			return 0;
 		}
-		return shopper.getItems()*baggingTime;
-	}
-
-	public int getBaggingTime(){
-		return baggingTime;
-	}
-
-	public void setBaggingTime(int bt){
-		baggingTime = bt;
-		return;
+		else{
+			return shopper.getItems()*Sim.baggingTime;
+		}
 	}
 
 	public void run(){
 
 		if (shopper == null){
 			checker.setBusy(false);
+			checker.addDownTime(1);
 		}
 		else{
 			checker.setBusy(true);
+			checker.addBusyTime(getTimeTaken());
+			checker.addShopperCount(1);
 		}
 
 		if(serveTime < Sim.finishTime){

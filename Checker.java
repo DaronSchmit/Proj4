@@ -1,4 +1,5 @@
 //Each checker will have a line, a boolean to see if it's busy or not, and a boolean for if its an express lane or not.
+//keeps trach of Busy and Down time, Items taken, Shoppers Served
 
 public class Checker{
 
@@ -8,6 +9,8 @@ public class Checker{
 	private int busyTime;
 	private int downTime;
 	private int serveTime;
+	private int shopperCount;
+	private int itemCount;
 
 
 	Checker(boolean express){
@@ -19,8 +22,10 @@ public class Checker{
 		else{
 			tenorless = false;
 		}
-		int busyTime = 0;
-		int downTime = 0;
+		busyTime = 0;
+		downTime = 0;
+		itemCount = 0;
+		shopperCount = 0;
 
 	}
 
@@ -66,4 +71,19 @@ public class Checker{
 		return serveTime;
 	}
 
+	public void addShopperCount(int s){
+		shopperCount += s;
+	}
+
+	public int getShopperCount(){
+		return shopperCount;
+	}
+
+	public void addItemCount(int i){
+		itemCount += i;
+	}
+
+	public int getItemCount(){
+		return itemCount;
+	}
 }
