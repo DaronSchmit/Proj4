@@ -29,26 +29,28 @@ public class CheckerEvent implements Event {
 			shopper = new Shopper(0);
 		}
 		else{
-			shopper = checker.getLine().remove();
-			//System.out.println(shopper.getItems());		
+			shopper = checker.getLine().remove();		
 		}
 	}
 
+	//Amount of time taken to bag
 	public int getTimeTaken(){
 		if(shopper == null){
 			return 0;
 		}
 		else{
-			return shopper.getItems()*Sim.baggingTime;
+			return shopper.getItems()*Sim.baggingTime; 
 		}
 	}
 
+	//Begins to pull shoppers out of Checker queues
 	public void run(){
 		CheckerEvent newEvent = new CheckerEvent(checker, serveTime);
-		if (shopper.getItems() == 0){
+		if (shopper.getItems() == 0){      
 			checker.setBusy(false);
 			checker.addDownTime(1);
 			Sim.agenda.add(newEvent, 1);
+			//checks and sets Checker as idle, if appropriate
 		}
 		else{
 			checker.setBusy(true);
@@ -57,9 +59,7 @@ public class CheckerEvent implements Event {
 			checker.addItemCount(shopper.getItems());
 			checker.addTimeWaited(shopper.getTimeWaited());
 			Sim.agenda.add(newEvent, getTimeTaken());
+			//Starts checking out shopper, recording statistics
 		}
-		//System.out.println("CheckerEvent at " + Sim.agenda.getCurrentTime());
-
 	}
-	
 }

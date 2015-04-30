@@ -30,6 +30,8 @@ public class Checker{
 
 	}
 
+	//Following methods are getters and setters as while as long term status booleans and record keepers for final print out
+
 	public boolean isBusy(){
 		return busy;
 	}
@@ -97,8 +99,8 @@ public class Checker{
 	}
 
 	public int getAveTimeWaited(){
-		double potato = timeWaited / shopperCount;
-		int y = (int)Math.round(potato);
+		double toReturn = timeWaited / shopperCount;
+		int y = (int)Math.round(toReturn);
 		return y;
 	}
 }

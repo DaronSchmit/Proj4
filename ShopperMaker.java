@@ -7,6 +7,8 @@ public class ShopperMaker implements Event{
 	public ShopperMaker(){
 	}
 	
+
+	//Decides arrival time based on formula in instructions
 	public double findArrival(){
 		double iaRate = 30;
 		int distArray[] = new int[100];
@@ -42,6 +44,7 @@ public class ShopperMaker implements Event{
 		return result;
 	}
 	
+	//Generates number of items based on formula in instructions
 	public int findItems(){
 		int dist[] = new int[] {10,10,10,20,20,20,20,30,30,30,30,30,40,40,40,40,50,50,50,50,60,60,60,70,70,70,80,80,90,100};
 		Random generator = new Random();
@@ -58,6 +61,7 @@ public class ShopperMaker implements Event{
 		
 	}
 
+	//Assigns a shopper to a Checker by checking each line and placing it in the first one that is not full
 	public void assignShopper(Shopper s){
 		int lowest = 1200;
 		int bestOption = 0;
@@ -78,12 +82,12 @@ public class ShopperMaker implements Event{
 				}
 			}
 		}
-		//System.out.println("Added shopper to lane " + (bestOption+1) + " with " + s.getItems() + " items at time " + Sim.agenda.getCurrentTime());
 		Sim.lanes[bestOption].getLine().add(s);
 
 
 	}
 
+	//Adds shoppers and reschedules itself
 	public void run(){
 		Shopper shop = makeShopper();
 		assignShopper(shop);

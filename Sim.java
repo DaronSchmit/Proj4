@@ -2,6 +2,7 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Sim{
 
@@ -10,14 +11,14 @@ public class Sim{
 	public static int baggingTime;
 	public static Checker[] lanes;
 	public static int normLanes = 6;
-	public static int expressLanes = 1;
+	public static int expressLanes = 0;
 	public static int totLanes = normLanes + expressLanes;
 
 	public static void main(String[] args){ 
 
 		lanes  = new Checker[normLanes + expressLanes];
-		finishTime = 50000;
-		baggingTime = 5;
+		finishTime = 20000;
+		baggingTime = 9;
 		int[] checkers = new int[normLanes + expressLanes];	
 
 
@@ -70,31 +71,7 @@ public class Sim{
 				System.out.print("Normal Lane ");
 			}
 
-
-
-			try{
-    		File file =new File("javaio-appendfile.txt");
- 			int d = r.getAveTimeWaited();
-    		//if file doesnt exists, then create it
-    		if(!file.exists()){
-    			file.createNewFile();
-    		}
- 
-    		//true = append file
-    		FileWriter fileWritter = new FileWriter(file.getName(),true);
-    	    BufferedWriter bufferWritter = new BufferedWriter(fileWritter);
-    	    bufferWritter.write(d);
-    	    bufferWritter.close();
- 
-	        System.out.println("Done");
- 
-    		}catch(IOException e){
-    			e.printStackTrace();
-    		}		
-
-
-
-    		//System.out.println((i+1) + ":   " + r.getBusyTime() + "      " + r.getDownTime() + "         " + r.getShopperCount() + "       " + r.getItemCount() + "          " + r.getAveTimeWaited());
+    		System.out.println((i+1) + ":   " + r.getBusyTime() + "      " + r.getDownTime() + "         " + r.getShopperCount() + "       " + r.getItemCount() + "          " + r.getAveTimeWaited());
 		}
 	}
 }
